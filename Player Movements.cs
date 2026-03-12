@@ -7,7 +7,9 @@ public class PlayerMove : MonoBehaviour
 
     public float speed = 6f;
     public float jumpspeed = 15f;
-    private bool isGround = true;
+    [SerializeField] private float groundRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+    private bool isGround;
 
     //ref
 
@@ -25,7 +27,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-
+        isGround = Physics2D.OverlapCircle(transform.position, groundRadius, groundLayer);
         Move();
         Jump();
 
