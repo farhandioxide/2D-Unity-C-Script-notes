@@ -74,12 +74,17 @@ public class PlayerMove : MonoBehaviour
     //ground check
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isGround = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGround = true;
+        }
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
-        isGround = false;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGround = true;
+        }
     }
 
 
